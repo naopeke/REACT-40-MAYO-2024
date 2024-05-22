@@ -1,4 +1,4 @@
-import './Home.css';
+
 
 function Home (){
 //     const estilosHomeContainer = {
@@ -14,14 +14,14 @@ function Home (){
     return (
         // <div className="home__container" style={estilosHomeContainer}>
 
-        <div className="home__container">
+        <div className="home__container flex flex-col justify-center items-center min-h-screen">
         
-            <h1 className="home__title">Home</h1>
+            <h1 className="home__title pb-10 text-3xl">Home</h1>
 
-            <div className="home__message--1">
+            <div className="home__message--1 text-lg">
                 "The only way to learn is to live"
             </div>
-            <div className="home__message--2">
+            <div className="home__message--2 italic">
                 Matt Haig - The Midnight Library
             </div>
         </div>
