@@ -1,4 +1,3 @@
-import "./Footer.css";
 
 function Footer() {
   console.log("Footer works");
