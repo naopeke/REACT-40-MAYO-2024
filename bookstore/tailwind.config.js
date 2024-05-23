@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        'royal-gold': '#BF9B30'
+      }
+    },
   },
   plugins: [],
 }

@@ -6,7 +6,7 @@ function Menu() {
 
   return (
     <>
-       <nav className="w-full flex items-center justify-between flex-wrap bg-teal-500 p-6">
+       <nav className="w-full flex items-center justify-between flex-wrap bg-[#BF9B30] p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Logo />
           <span className="font-semibold text-xl tracking-tight">
@@ -15,7 +15,7 @@ function Menu() {
         </div>
 
         <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+          <button className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white">
             <svg
               className="fill-current h-3 w-3"
               viewBox="0 0 20 20"
@@ -37,7 +37,7 @@ function Menu() {
             </a> */}
             <a
               href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mx-6"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-amber-900 mx-6"
             >
               Libros
             </a>
