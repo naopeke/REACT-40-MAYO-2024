@@ -1,29 +1,13 @@
-// import styles from './BooksPage.module.css';
-
-import BookItem from "../components/BookItem";
-import { Book } from "../config/types";
+// import BookItem from "../components/BookItem";
+import BookList from "../components/BookList";
 
 function BooksPage (){
-
-    const book: Book = {
-        id_book: 1,
-        id_user: 1,
-        title: 'Clean JavaScript',
-        author: 'Miguel A. Gómez',
-        photo: 'https://m.media-amazon.com/images/I/51q4UQsslIL._SL1233_.jpg',
-        price: 29.9,
-        type: 'Tapa Dura'
-    }
-    // const books = [
-    //     { imageUrl: 'http', title: 'Clean JavaScript', author:'Miguel A. Gómez', price: 20},
-    //     { imageUrl: 'http', title: 'Clean JavaScript', author:'Miguel A. Gómez', price: 20},
-    // ]
+    
 
     return (
-        <div className="bookspage__container">
+        <div className="bookspage__container flex flex-wrap">
         
-        <BookItem book={book}/>
-
+        <BookList />
         </div>
     )
 }
