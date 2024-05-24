@@ -33,7 +33,7 @@ function Menu() {
           <Sidebar toggleMenu={toggleMenu} />
         )}
 
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto md:hidden">
+        <div className="hidden lg:flex lg:items-center lg:w-auto md:hidden">
             <div className="text-sm lg:flex-grow">
               {/* <a
                 href="#responsive-header"
