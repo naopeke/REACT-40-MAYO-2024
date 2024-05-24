@@ -9,7 +9,7 @@ function Sidebar() {
 
   return (
     <>
-    <div className=" transition-opacity duration-500 absolute left-0 top-20 flex flex-col bg-clip-border  bg-white text-gray-700 h-[calc(100vh-8rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+    <div className=" transition-opacity duration-500 absolute left-0 top-0 flex flex-col bg-clip-border  bg-white text-gray-700 h-[calc(100vh-1rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
   <div className="mb-2 p-4">
     <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">Menú</h5>
   </div>
