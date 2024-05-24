@@ -30,18 +30,10 @@ function Menu() {
         </div>
 
         {isOpenSidebar && (
-          <Sidebar />
-          // <div className="absolute right-3 top-20 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
-          //   <div className="py-1" role="none">
-          //     <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-0">Libros</a>
-          //     <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-1">Añadir Libros</a>
-          //     <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-2">Editar Libros</a>
-          //     <a href="#" className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" id="menu-item-2">Sign Out</a>
-          //   </div>
-          // </div>
+          <Sidebar toggleMenu={toggleMenu} />
         )}
 
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto sm:hidden">
+        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto md:hidden">
             <div className="text-sm lg:flex-grow">
               {/* <a
                 href="#responsive-header"
@@ -51,28 +43,28 @@ function Menu() {
               </a> */}
               <a
                 href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-amber-900 mx-6"
+                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
               >
                 Libros
               </a>
-              {/* <a
+              <a
                 href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mx-6"
+                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
               >
                 Añadir Libro
-              </a> */}
-              {/* <a
+              </a>
+              <a
                 href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mx-6"
+                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
               >
                 Editar Libro
-              </a> */}
-              {/* <a
+              </a>
+              <a
                 href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mx-6"
+                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
               >
                 Log Out
-              </a> */}
+              </a>
             </div>
 
             <div >
