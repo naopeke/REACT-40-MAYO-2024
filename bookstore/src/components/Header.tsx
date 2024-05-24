@@ -8,6 +8,8 @@ import Menu from './Menu';
 function Header() {
   console.log("Header works");
 
+  // const [user, setUser ] = useState< null | User >(null);
+
   return (
     <header className="header w-full fixed top-0">      
      {/* <header className={`header w-full fixed top-0 ${styles.header}`}>       */}
