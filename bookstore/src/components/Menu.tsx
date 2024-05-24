@@ -15,7 +15,7 @@ function Menu() {
 
   return (
     <>
-       <nav className="w-full flex items-center justify-between flex-wrap bg-[#BF9B30] p-6">
+       <nav className="w-full flex items-center justify-between flex-wrap bg-[#0d6efd] p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Logo />
           <span className="font-semibold text-xl tracking-tight">
