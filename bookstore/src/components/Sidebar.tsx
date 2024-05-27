@@ -4,10 +4,15 @@ import { FaEdit } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+import { IoMdLogIn } from "react-icons/io";
+import { IoMdPersonAdd } from "react-icons/io";
 
 type SidebarProps = {
     toggleMenu: () => void;
 }
+
+const user = { name: 'Nao'};
+
 
 function Sidebar(props: SidebarProps) {
     const {toggleMenu} = props;
@@ -20,6 +25,9 @@ function Sidebar(props: SidebarProps) {
     <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">Menú</h5>
   </div>
   <nav className="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
+ 
+  {user ? (
+    <>
     <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
       <div className="grid place-items-center mr-4">
       <FaBook />
@@ -51,6 +59,26 @@ function Sidebar(props: SidebarProps) {
       <IoMdLogOut />
       </div>Log Out
     </div>
+    </>
+    
+  ) : (
+    <>
+  <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div className="grid place-items-center mr-4">
+      <IoMdLogIn />
+      </div>
+      Log In
+    </div>
+
+    <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <div className="grid place-items-center mr-4">
+      <IoMdPersonAdd />
+      </div>
+      Register
+    </div>
+    </>
+
+  )}
   </nav>
 </div>
 
