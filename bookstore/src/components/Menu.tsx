@@ -24,9 +24,9 @@ function Menu() {
        <nav className="w-full flex items-center justify-between flex-wrap bg-[#0d6efd] p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <Logo />
-          <span className="font-semibold text-xl tracking-tight">
+          <NavLink to="/" className="font-semibold text-xl tracking-tight">
             BookStore
-          </span>
+          </NavLink>
         </div>
 
         <div className="block lg:hidden">

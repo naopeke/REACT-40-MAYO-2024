@@ -7,7 +7,7 @@ function PrivateRoutes() {
 
   return (
     <>
-    {!user && <Navigate to="/login" />}
+    {!user && <Navigate to="/" />}
     {user && <Outlet />}
 
     {/* if(!user) return <Navigate to="/login" />
