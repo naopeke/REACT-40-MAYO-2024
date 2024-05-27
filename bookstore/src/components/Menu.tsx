@@ -17,7 +17,16 @@ function Menu() {
   const user = { name: 'Nao'};
   // const user = null;
 
+  // const linkStyles = {
+  //   color: 'black',
+  //   font-size: '2rem'
+  // }
+
+  // function customClassName({ isActive}: {isActive: boolean}){
+  //   return isActive ? StyleSheet.active : '';
+  // }
   
+
 
   return (
     <>
@@ -47,29 +56,29 @@ function Menu() {
 
             {user ? (
               <>
-                <NavLink to="/books" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                <NavLink to="/books" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Libros 
                 </NavLink>
 
-                <NavLink to="/add-book" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                <NavLink to="/add-book" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Añadir Libro
                 </NavLink>
   
-                <NavLink to="edit-book"  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                <NavLink to="edit-book"  className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Editar Libro
                 </NavLink>
                 
-                <NavLink to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                <NavLink to="/profile" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Perfil
                 </NavLink> 
-                <NavLink to="/login" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                <NavLink to="/login" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Logout
                 </NavLink> 
               </>
 
             ) : (
               <>
-              <NavLink to="/register" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+              <NavLink to="/register" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                   Register
                 </NavLink>
                 <NavLink to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
