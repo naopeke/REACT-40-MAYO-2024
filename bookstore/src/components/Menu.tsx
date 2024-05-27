@@ -15,6 +15,8 @@ function Menu() {
   }
 
   const user = { name: 'Nao'};
+  // const user = null;
+
   
 
   return (

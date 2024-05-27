@@ -6,12 +6,15 @@ import { IoMdLogOut } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import { IoMdLogIn } from "react-icons/io";
 import { IoMdPersonAdd } from "react-icons/io";
+import { NavLink } from "react-router-dom";
+
 
 type SidebarProps = {
     toggleMenu: () => void;
 }
 
 const user = { name: 'Nao'};
+// const user = null;
 
 
 function Sidebar(props: SidebarProps) {
@@ -28,37 +31,38 @@ function Sidebar(props: SidebarProps) {
  
   {user ? (
     <>
-    <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <NavLink to="/books" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
       <div className="grid place-items-center mr-4">
       <FaBook />
       </div>
       Libros
-    </div>
+      </NavLink>
    
-    <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+    <NavLink to="/add-book" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
       <div className="grid place-items-center mr-4">
       <MdAddChart />
       </div>Añadir Libros
-    </div>
+      </NavLink>
    
-    <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <NavLink to="/edit-book" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
       <div className="grid place-items-center mr-4">
       <FaEdit />
       </div>Editar Libros <div className="grid place-items-center ml-auto justify-self-end">
       </div>
-    </div>
+      </NavLink>
    
-    <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+    
+      <NavLink to="/profile" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
       <div className="grid place-items-center mr-4">
       <IoPerson />
       </div>Profile
-    </div>
+      </NavLink>
    
-    <div role="button" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+      <NavLink to="/login" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
       <div className="grid place-items-center mr-4">
       <IoMdLogOut />
       </div>Log Out
-    </div>
+      </NavLink>
     </>
     
   ) : (
