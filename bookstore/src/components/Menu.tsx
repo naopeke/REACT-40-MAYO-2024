@@ -2,6 +2,7 @@ import Logo from './Logo';
 import Sidebar from './Sidebar';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from 'react';
+import { NavLink } from "react-router-dom";
 
 function Menu() {
   console.log("Menu works");
@@ -12,6 +13,7 @@ function Menu() {
   const toggleMenu = () => {
     setIsOpenSidebar(prevState => !prevState)
   }
+  
 
   return (
     <>
@@ -35,30 +37,22 @@ function Menu() {
 
         <div className="hidden lg:flex lg:items-center lg:w-auto md:hidden">
             <div className="text-sm lg:flex-grow">
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mx-6"
-              >
+
+                <NavLink to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Perfil
-              </a>
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
-              >
-                Libros
-              </a>
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
-              >
+                </NavLink> 
+                
+                <NavLink to="/books" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                Libros 
+                </NavLink>
+
+                <NavLink to="/add-book" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Añadir Libro
-              </a>
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
-              >
+                </NavLink>
+  
+                <NavLink to="edit-book"  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Editar Libro
-              </a>
+                </NavLink>
               <a
                 href="#responsive-header"
                 className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
@@ -77,6 +71,8 @@ function Menu() {
             </div>
         </div>
       </nav>
+
+
     </>
 );
 }

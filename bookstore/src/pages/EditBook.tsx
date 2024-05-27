@@ -1,7 +1,7 @@
 
 function EditBook() {
   return (
-    <div>EditBook</div>
+    <div className="mt-20">EditBook</div>
   )
 }
 
