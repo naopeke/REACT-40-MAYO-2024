@@ -29,15 +29,17 @@ function Menu() {
           </NavLink>
         </div>
 
+      {!isOpenSidebar && (
         <div className="block lg:hidden">
           <button onClick={toggleMenu} className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white">
             <RxHamburgerMenu />
           </button>
         </div>
+      )}
 
-        {isOpenSidebar && (
+        <div className={`lg:hidden ${isOpenSidebar ? '' : 'hidden'}`}>
           <Sidebar toggleMenu={toggleMenu} />
-        )}
+        </div>
 
         <div className="hidden lg:flex lg:items-center lg:w-auto md:hidden">
             <div className="text-sm lg:flex-grow">
