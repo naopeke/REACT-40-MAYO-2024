@@ -25,7 +25,7 @@ function BookItem(props: BookItemProps) {
         <div className="bookitem__container min-h-screen flex justify-center items-center pt-6">
             {/* {books.map(book => ( */}
                 <div key={book.id_book} className="max-w-xm rounded overflow-hidden shadow-lg">
-                    <img className="w-60 ml-6" src={book.photo} alt={`${book.title} cover`} />
+                    <img className="w-60 h-80 ml-6" src={book.photo} alt={`${book.title} cover`} />
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2">{book.title}</div>
                         <div className="grid grid-cols-2 gap-2">

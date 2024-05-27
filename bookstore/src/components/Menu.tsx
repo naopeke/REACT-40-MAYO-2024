@@ -62,12 +62,9 @@ function Menu() {
                 <NavLink to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Perfil
                 </NavLink> 
-                <a
-                  href="#responsive-header"
-                  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
-                >
-                  Log Out
-                </a>
+                <NavLink to="/login" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                Logout
+                </NavLink> 
               </>
 
             ) : (
