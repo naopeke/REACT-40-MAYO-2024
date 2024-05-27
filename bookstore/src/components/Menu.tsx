@@ -35,12 +35,12 @@ function Menu() {
 
         <div className="hidden lg:flex lg:items-center lg:w-auto md:hidden">
             <div className="text-sm lg:flex-grow">
-              {/* <a
+              <a
                 href="#responsive-header"
                 className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mx-6"
               >
                 Perfil
-              </a> */}
+              </a>
               <a
                 href="#responsive-header"
                 className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
