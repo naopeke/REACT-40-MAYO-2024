@@ -5,12 +5,12 @@ import Footer from './components/Footer';
 import PrivateRoutes from './components/PrivateRoutes';
 
 import Home from './pages/Home';
-// import BooksPage from './pages/BooksPage';
+import BooksPage from './pages/BooksPage';
 import Profile from './pages/Profile';
 import EditBook from './pages/EditBook';
 import AddBook from './pages/AddBook';
 import Register from './pages/Register';
-import Books from './pages/Books';
+import Login from './pages/Login';
 
 
 
@@ -27,12 +27,14 @@ function App(){
             <Routes>
               <Route path="/" element={<Home/>} />
               <Route path="/register" element={<Register/>} />
-              <Route path="/profile" element={<Profile/>} />
-              <Route path="/books" element={<Books/>} />
-              <Route path="/edit-book" element={<EditBook/>} />
-              <Route path="/add-book" element={<AddBook/>} />
+              <Route path="/login" element={<Login />} />
 
-              <Route element={<PrivateRoutes />} />
+              <Route element={<PrivateRoutes />}>
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/books" element={<BooksPage />} />
+                <Route path="/edit-book" element={<EditBook />} />
+                <Route path="/add-book" element={<AddBook />} />
+              </Route>
 
             </Routes>
           </main>

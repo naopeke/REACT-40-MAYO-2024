@@ -1,4 +1,3 @@
-// import { Route, Routes, NavLink } from 'react-router-dom';
 import { Outlet, Navigate } from 'react-router-dom';
 
 function PrivateRoutes() {
@@ -8,10 +7,10 @@ function PrivateRoutes() {
 
   return (
     <>
-    {!user && <Navigate to="/" />}
+    {!user && <Navigate to="/login" />}
     {user && <Outlet />}
 
-    {/* if(!user) return <Navigate to="/register" />
+    {/* if(!user) return <Navigate to="/login" />
     return <Outlet /> */}
     </>
   )

@@ -13,6 +13,8 @@ function Menu() {
   const toggleMenu = () => {
     setIsOpenSidebar(prevState => !prevState)
   }
+
+  const user = { name: 'Nao'};
   
 
   return (
@@ -38,6 +40,9 @@ function Menu() {
         <div className="hidden lg:flex lg:items-center lg:w-auto md:hidden">
             <div className="text-sm lg:flex-grow">
 
+
+            {user ? (
+              <>
                 <NavLink to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Perfil
                 </NavLink> 
@@ -53,22 +58,42 @@ function Menu() {
                 <NavLink to="edit-book"  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Editar Libro
                 </NavLink>
-              <a
-                href="#responsive-header"
-                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
-              >
-                Log Out
-              </a>
+                
+                <a
+                  href="#responsive-header"
+                  className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6"
+                >
+                  Log Out
+                </a>
+              </>
+
+            ) : (
+              <>
+              <NavLink to="/register" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                  Register
+                </NavLink>
+                <NavLink to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+                  Log In
+                </NavLink>
+              </>
+
+
+            )
+
+          }
+                
+
+             
             </div>
 
-            <div >
+            {/* <div >
               <a
                 href="#"
                 className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
               >
                 Log In
               </a>
-            </div>
+            </div> */}
         </div>
       </nav>
 
