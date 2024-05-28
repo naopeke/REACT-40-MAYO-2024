@@ -2,7 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import PrivateRoutes from './components/PrivateRoutes';
+import PrivateRoutes from './routes/PrivateRoutes';
+import PublicRoutes from './routes/PublicRoutes';
 
 import Home from './pages/Home';
 import BooksPage from './pages/BooksPage';
@@ -21,13 +22,13 @@ function App(){
 
         <Header />
           <main>
-            {/* <Home /> */}
-            {/* <BooksPage /> */}
-
             <Routes>
               <Route path="/" element={<Home/>} />
-              <Route path="/register" element={<Register/>} />
-              <Route path="/login" element={<Login />} />
+
+              <Route element={<PublicRoutes />}>
+                <Route path="/register" element={<Register/>} />
+                <Route path="/login" element={<Login />} />
+              </Route>
 
               <Route element={<PrivateRoutes />}>
                 <Route path="/profile" element={<Profile />} />
@@ -35,7 +36,6 @@ function App(){
                 <Route path="/edit-book" element={<EditBook />} />
                 <Route path="/add-book" element={<AddBook />} />
               </Route>
-
             </Routes>
           </main>
         <Footer />
