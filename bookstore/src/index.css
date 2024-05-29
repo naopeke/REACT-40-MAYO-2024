@@ -17,6 +17,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+input:invalid {
+  outline: 2px solid crimson;
+}
+
+error {
+  display: none;
+}
+
+input:invalid + error {
+  display: block
+}
+
 * {
   box-sizing: border-box;
 }

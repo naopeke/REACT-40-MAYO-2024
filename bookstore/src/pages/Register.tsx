@@ -86,7 +86,8 @@ function Register() {
             </label>
           </div>
           <div className="md:w-2/3">
-            <input ref={inputRef} name="password" value={formValues.password} onChange={handleInputChange} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="1234" />
+            <input pattern="[a-zA-Z0-9]{3,10}" minLength={6} ref={inputRef} name="password" value={formValues.password} onChange={handleInputChange} className=" peer invalid:bg-red-300 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-password" type="password" placeholder="1234" />
+            <p className="hidden peer-invalid:block text-red-400">Campo obligatorio</p>
           </div>
         </div>
 
