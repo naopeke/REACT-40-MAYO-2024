@@ -37,5 +37,5 @@ const editBookSchema = z.object({
 type EditBookFormValues = z.infer<typeof editBookSchema>
 
 
-export default { addBookSchema, editBookSchema };
+export { addBookSchema, editBookSchema };
 export type { AddBookFormValues, EditBookFormValues };

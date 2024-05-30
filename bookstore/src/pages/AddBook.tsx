@@ -18,37 +18,51 @@ function AddBook() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
+      <div className="md:flex md:items-center mb-6">
         <Input
           label="Titulo"
           type="text"
           {...register('title')}
           error={errors.title?.message}
         />
+        </div>
+
+        <div className="md:flex md:items-center mb-6">
         <Input
           label="Autor"
           type="text"
           {...register('author')}
           error={errors.author?.message}
         />
+        </div>
+
+        <div className="md:flex md:items-center mb-6">
         <Input
           label="Foto"
           type="text"
           {...register('photo')}
           error={errors.photo?.message}
         />
+        </div>
+
+        <div className="md:flex md:items-center mb-6">
         <Input
           label="Precio"
           type="number"
           {...register('price', { valueAsNumber: true })}
           error={errors.price?.message}
         />
+        </div>
+        
         <div className="md:flex md:items-center mb-6">
+          <div className="md:w-1/3">        
           <label
             className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
             htmlFor="type"
           >
             Tipo de libro
           </label>
+          </div>
           <div className="md:w-2/3">
             <select
               id="type"
