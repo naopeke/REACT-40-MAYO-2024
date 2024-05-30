@@ -2,6 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { addBookSchema, AddBookFormValues } from '../schemas/formSchemas';
 import Input from '../components/ui/Input';
+import Heading from "../components/ui/Heading"
+
 
 function AddBook() {
   const { register, handleSubmit, formState } = useForm<AddBookFormValues>({
@@ -16,7 +18,8 @@ function AddBook() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen flex-col">
+      <Heading className="text-center mb-12" title="Añadir Libro" />
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
       <div className="md:flex md:items-center mb-6">
         <Input
