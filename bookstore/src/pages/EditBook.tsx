@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import Heading from "../components/ui/Heading"
 
 function EditBook() {
 
@@ -9,6 +10,8 @@ function EditBook() {
     price: '',
     type: ''
   });
+
+  
 
   const inputRef = useRef<null | HTMLInputElement>(null);
 
@@ -39,7 +42,8 @@ function EditBook() {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen flex-col">
+      <Heading className="text-center mb-12" title="Editar Libro" />
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">
           <div className="md:w-1/3">
@@ -93,7 +97,7 @@ function EditBook() {
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">
             <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-              Actualizar Libro
+              Actualizar
             </button>
           </div>
         </div>

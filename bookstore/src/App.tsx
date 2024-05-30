@@ -4,9 +4,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
-
+import Books from './pages/Books';
 import Home from './pages/Home';
-import BooksPage from './pages/BooksPage';
+// import BooksPage from './pages/BooksPage';
 import Profile from './pages/Profile';
 import EditBook from './pages/EditBook';
 import AddBook from './pages/AddBook';
@@ -32,7 +32,7 @@ function App(){
 
               <Route element={<PrivateRoutes />}>
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/books" element={<BooksPage />} />
+                <Route path="/books" element={<Books />} />
                 <Route path="/edit-book" element={<EditBook />} />
                 <Route path="/add-book" element={<AddBook />} />
               </Route>

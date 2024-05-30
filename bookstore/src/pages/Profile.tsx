@@ -1,6 +1,8 @@
 // import { useRef } from "react";
 import { useForm  } from "react-hook-form";
 import Input from "../components/ui/Input";
+import Heading from "../components/ui/Heading"
+// import { DevTool } from '@hookform/devtools';
 
 type FormValues = {
   name: string;
@@ -25,12 +27,13 @@ function Profile() {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen flex-col">
+      <Heading className="text-center mb-12" title="Perfil" />
       <form 
       onSubmit={handleSubmit(onSubmit)}
       className="w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">
-          <Input label="Nombre*" type="text" placeholder="Jane"
+          <Input id="name" label="Nombre*" type="text" placeholder="Jane"
           {...register('name', {
               required:{value: true, message: 'Nombre obligatorio'},
               maxLength: {value: 10, message: 'Maximo 10 caracteres'},
@@ -40,7 +43,7 @@ function Profile() {
         </div>
 
         <div className="md:flex md:items-center mb-6">
-            <Input label="Apellido*" type="text" placeholder="Doe"
+            <Input id="last_name" label="Apellido*" type="text" placeholder="Doe"
             {...register('last_name', {
               required:{value: true, message: 'Nombre obligatorio'},
               maxLength: {value: 10, message: 'Maximo 10 caracteres'},
@@ -50,7 +53,7 @@ function Profile() {
         </div>
 
         <div className="md:flex md:items-center mb-6">
-          <Input label="Email*" type="email" placeholder="jane@example.com"
+          <Input id="email" label="Email*" type="email" placeholder="jane@example.com"
            {...register('email', {
             required:{value: true, message: 'Nombre obligatorio'},
             minLength: {value: 3, message: 'Minimo 3 caracteres'},
@@ -60,14 +63,14 @@ function Profile() {
         </div>
 
         <div className="md:flex md:items-center mb-6">
-          <Input label="Foto" type="text" placeholder="https://photo.com/photo.jpg" />
+          <Input id="email" label="Foto" type="text" placeholder="https://photo.com/photo.jpg" />
         </div>
 
         <div className="md:flex md:items-center">
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">
             <button disabled={!isValid} className="disabled:cursor-not-allowed disabled:opacity-55 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-              Actualizar Datos
+              Actualizar
             </button>
           </div>
         </div>

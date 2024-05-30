@@ -6,18 +6,40 @@ function Login() {
   const [emailValue, setEmailValue] = useState(''); 
   const [passwordValue, setPasswordValue] = useState('');
 
+  const [errors, setErrors] = useState({
+    email: '',
+    password: '',
+  });
+
   
   const inputRef = useRef<null | HTMLInputElement>(null);
 
 
   function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>){
     // console.log(event.target.value)
-    setEmailValue(event.target.value);
+    const {name, value} = event.target;
+    setEmailValue(value);
+
+    // setEmailValue(event.target.value);
     inputRef.current?.focus();
-  }
+
+    const checkErrors = {...errors}; // 既存のエラーを維持
+
+    if (name === 'email' && !value) checkErrors.email = 'Email requerido';
+    setErrors(checkErrors);
+  } 
 
   function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>){
     setPasswordValue(event.target.value);
+
+    const {name, value} =event.target;
+    setPasswordValue(value);
+
+    inputRef.current?.focus();
+
+    const checkErrors = {...errors};
+
+    if (name === 'password' && !value) checkErrors.password = ''
   }
 
   
@@ -36,9 +58,10 @@ function Login() {
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Email
             </label>
-            <input name="email" 
+            <input 
             // style={inputStyles} 
-            value={emailValue} onChange={handleEmailChange}className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="email" required />
+            ref={inputRef}
+         name="email" value={emailValue} onChange={handleEmailChange}className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="email" required />
           </div>
 
           <div className="mb-6">
