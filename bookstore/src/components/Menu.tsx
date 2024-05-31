@@ -3,6 +3,8 @@ import Sidebar from './Sidebar';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
+import { useUser } from '../contexts/UserProvider';
+import Greet from './Greet';
 
 function Menu() {
   console.log("Menu works");
@@ -14,7 +16,9 @@ function Menu() {
     setIsOpenSidebar(prevState => !prevState)
   }
 
-  const user = { name: 'Nao'};
+  const { user } = useUser();
+  console.log('logged in user:', user);
+  // const user = { name: 'Nao'};
   // const user = null;
 
   // const linkStyles = {
@@ -74,6 +78,7 @@ function Menu() {
                 <NavLink to="/login" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Logout
                 </NavLink> 
+                <Greet />
               </>
 
             ) : (

@@ -20,17 +20,14 @@ type UserProviderProps = {
     children: ReactNode;
 };
 
-// 初期コンテキストの定義
-const initialContext: UserContextType = { 
-    user: null, 
-    logIn: () => {}, 
-    logOut: () => {}
-};
 
 // UserContextを作成
-const UserContext = createContext<UserContextType>(initialContext);
+const UserContext = createContext<UserContextType>({} as UserContextType);
 
-function UserProvider({ children }: UserProviderProps) {
+function UserProvider(props: UserProviderProps) {
+    
+    const { children } = props;
+
     const [user, setUser] = useState<User | null>(() => {
         const userLocalStorage = localStorage.getItem('user');
         return userLocalStorage ? JSON.parse(userLocalStorage) : null;
@@ -54,6 +51,11 @@ function UserProvider({ children }: UserProviderProps) {
 }
 
 // カスタムフックを定義してUserContextを利用
+//UserContext は、UserProvider コンポーネントで提供されるコンテキストです。
+//useUser を使用することで、コンポーネント内でユーザー情報にアクセスしたり、
+//ログイン状態を確認したり、ログアウト機能を呼び出したりすることができます。
+//これにより、コンポーネントが必要なときにユーザー情報を簡単に取得できます。
+
 const useUser = () => {
     const context = useContext(UserContext);
     if (!context) {

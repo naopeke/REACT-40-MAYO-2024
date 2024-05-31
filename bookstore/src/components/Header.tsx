@@ -1,6 +1,6 @@
 import "./Header.module.css";
 import Menu from './Menu';
-import Greet from '../components/Greet';
+import Greet from '../components/Greet'
 
 
 function Header() {

@@ -6,13 +6,14 @@ import PrivateRoutes from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
 import Books from './pages/Books';
 import Home from './pages/Home';
-// import BooksPage from './pages/BooksPage';
 import Profile from './pages/Profile';
 import EditBook from './pages/EditBook';
 import AddBook from './pages/AddBook';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import UserProvider from './contexts/UserProvider';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify"
 
 function App(){
 
@@ -38,9 +39,10 @@ function App(){
                 <Route path="/add-book" element={<AddBook />} />
               </Route>
             </Routes>
-          </main>
-          </UserProvider>
+          </main>  
         <Footer />
+        </UserProvider>
+        <ToastContainer />
     </>
   )
 }

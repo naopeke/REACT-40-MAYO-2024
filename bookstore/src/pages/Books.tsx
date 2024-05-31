@@ -1,33 +1,46 @@
 import { useEffect, useState } from "react";
 import BookList from "../components/BookList";
 import { Book } from "../config/types";
+import { useUser } from '../contexts/UserProvider';
+import { Link } from "react-router-dom";
 
 function Books() {
 
   const [books, setBooks] = useState<Book[]>([]);
-  const id_user = 1;
+  
+  const { user } = useUser(); //ログインユーザーの情報
+  const id_user = user?.id_user;
 
-
-  async function getBooks() {
-    try {
-      const resp = await fetch(`https://boockstore-codenotch.onrender.com/books?id_user=${id_user}`);
-      const json = await resp.json();
-      setBooks(json.data);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message);
-      }
-    }
-  }
 
   useEffect(() => {
+    async function getBooks() {
+      try {
+        const resp = await fetch(`http://localhost:3000/books?id_user=${id_user}`);
+        const json = await resp.json();
+        setBooks(json.data);
+      } catch (error) {
+        if (error instanceof Error) {
+          console.log(error.message);
+        }
+      }
+    }
+  
     getBooks();
-  }, []);
-
+  }, [id_user, setBooks]);
+  
   return (
     <div className="flex flex-wrap justify-center">
       <div className="mt-20">Books</div>
-      <BookList books={books} />
+      {books.length === 0 ? (
+        <div className="mt-10 text-center">
+          <p>No books available.</p>
+          <Link to="/add-book" className="text-blue-500 underline">
+            Go to Addbook page
+          </Link>
+        </div>
+      ) : (
+        <BookList books={books} />
+      )}
     </div>
   );
 }

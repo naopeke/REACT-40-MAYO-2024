@@ -1,7 +1,7 @@
 //rfce
 import { useState, useRef } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -15,6 +15,7 @@ function Login() {
 
   
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>){
     // console.log(event.target.value)
@@ -48,14 +49,14 @@ function Login() {
     event.preventDefault();
 
   // バリデーションチェック
-  if (!emailValue) {
-    setErrors({ ...errors, email: 'Email requerido' });
-    return;
-  }
-  if (!passwordValue) {
-    setErrors({ ...errors, password: 'Password requerido' });
-    return;
-  }
+  // if (!emailValue) {
+  //   setErrors({ ...errors, email: 'Email requerido' });
+  //   return;
+  // }
+  // if (!passwordValue) {
+  //   setErrors({ ...errors, password: 'Password requerido' });
+  //   return;
+  // }
 
     try {
       const response = await axios.post('http://localhost:3000/login', {
@@ -63,6 +64,7 @@ function Login() {
         password: passwordValue,
       });
       console.log(response.data);
+      navigate('/books');
     } catch (error) {
       console.error('Error logging in:', error);
     }

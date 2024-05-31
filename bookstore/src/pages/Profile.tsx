@@ -3,6 +3,8 @@ import { useForm  } from "react-hook-form";
 import Input from "../components/ui/Input";
 import Heading from "../components/ui/Heading"
 // import { DevTool } from '@hookform/devtools';
+import { useUser } from '../contexts/UserProvider';
+import axios from "axios";
 
 type FormValues = {
   name: string;
@@ -14,16 +16,25 @@ type FormValues = {
 
 function Profile() {
 
+  const { user } = useUser();
+
   const { register, handleSubmit, formState } = useForm<FormValues>({
-    mode:'onChange'
+    mode:'onChange',
+    defaultValues: user ? user : {} //defaultValues にログインユーザーの情報が存在する場合にのみその値を設定するようにします。具体的には、三項演算子を使用して、user が存在する場合はその値を、存在しない場合は空のオブジェクト {} を渡すようにします。
   });
 
   const { errors, isValid } = formState;
   console.log(errors);
 
-  function onSubmit (data: FormValues){
-    console.log(data);
-  }
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const response = await axios.post('http://localhost:3000/profile', data);
+      console.log(response.data);
+
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
+  };
 
 
   return (
@@ -69,7 +80,7 @@ function Profile() {
         <div className="md:flex md:items-center">
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">
-            <button disabled={!isValid} className="disabled:cursor-not-allowed disabled:opacity-55 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            <button disabled={!isValid} className="disabled:cursor-not-allowed disabled:opacity-55 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
               Actualizar
             </button>
           </div>
