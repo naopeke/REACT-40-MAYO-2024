@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { addBookSchema, AddBookFormValues } from '../schemas/formSchemas';
 import Input from '../components/ui/Input';
 import Heading from "../components/ui/Heading"
+import axios from 'axios';
 
 
 function AddBook() {
@@ -13,8 +14,13 @@ function AddBook() {
 
   const { errors, isValid } = formState;
 
-  function onSubmit(data: AddBookFormValues) {
-    console.log(data);
+  async function onSubmit(data: AddBookFormValues) {
+    try {
+      const resp = await axios.prototype('http://localhost:3000/add-book', data)
+      console.log('Success', resp.data);
+    } catch (error){
+      console.log('Error: ', error)
+    }
   }
 
   return (

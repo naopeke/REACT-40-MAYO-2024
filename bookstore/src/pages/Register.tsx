@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 // import Input from "../components/ui/Input";
+import axios from "axios";
 
 function Register() {
 
@@ -57,9 +58,14 @@ function Register() {
     setFormValues({ ...formValues, [name]: value });
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>){
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault();
-    console.log(formValues);
+    try {
+      const response = await axios.post('/api/register', formValues);
+      console.log(response.data);
+    }catch (error) {
+      console.error('Error registering:', error);
+    }
 
     setFormValues({
       name: '',

@@ -1,5 +1,6 @@
 //rfce
 import { useState, useRef } from 'react';
+import axios from 'axios';
 
 function Login() {
 
@@ -42,7 +43,18 @@ function Login() {
     if (name === 'password' && !value) checkErrors.password = ''
   }
 
-  
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    try {
+      const response = await axios.post('/login', {
+        email: emailValue,
+        password: passwordValue,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
+  }
 
   // const inputStyles = {
   //   outline: passwordValue.length <8 ? '4px solid crimson': 'none'
@@ -53,7 +65,7 @@ function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-xs">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Email
