@@ -89,7 +89,7 @@ function AddBook() {
               type="submit"
               disabled={!isValid}
             >
-              Añadir Libro
+              Añadir
             </button>
           </div>
         </div>

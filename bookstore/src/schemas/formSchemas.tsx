@@ -22,8 +22,6 @@ const addBookSchema = z.object({
   })
 });
 
-type AddBookFormValues = z.infer<typeof addBookSchema>
-
 const editBookSchema = z.object({
   title: z.string().min(1, 'Titulo obligatorio').min(3, 'Minimo 3 caracteres').max(20, 'Maximo 20 caracteres'),
   author: z.string().min(1, 'Autor obligatorio'),
@@ -34,6 +32,7 @@ const editBookSchema = z.object({
   })
 });
 
+type AddBookFormValues = z.infer<typeof addBookSchema>
 type EditBookFormValues = z.infer<typeof editBookSchema>
 
 
