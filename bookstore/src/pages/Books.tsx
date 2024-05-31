@@ -3,20 +3,32 @@ import BookList from "../components/BookList";
 import { Book } from "../config/types";
 
 function Books() {
+
   const [books, setBooks] = useState<Book[]>([]);
+  const id_user = 1;
+
+
+  async function getBooks() {
+    try {
+      const resp = await fetch(`https://boockstore-codenotch.onrender.com/books?id_user=${id_user}`);
+      const json = await resp.json();
+      setBooks(json.data);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      }
+    }
+  }
 
   useEffect(() => {
-    fetch('/books')
-      .then(response => response.json())
-      .then(data => setBooks(data))
-      .catch(error => console.error('Error fetching books:', error));
+    getBooks();
   }, []);
 
   return (
-    <>
+    <div className="flex flex-wrap justify-center">
       <div className="mt-20">Books</div>
       <BookList books={books} />
-    </>
+    </div>
   );
 }
 

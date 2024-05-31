@@ -1,20 +1,16 @@
 import "./Header.module.css";
 import Menu from './Menu';
-// import styles from './BookItem.module.css';
-
-// import Logo from './Logo';
+import Greet from '../components/Greet';
 
 
 function Header() {
   console.log("Header works");
 
-  // const [user, setUser ] = useState< null | User >(null);
 
   return (
     <header className="header w-full fixed top-0">      
-     {/* <header className={`header w-full fixed top-0 ${styles.header}`}>       */}
-    {/* <Logo /> */}
       <Menu />
+      <Greet />
     </header>
   );
 }

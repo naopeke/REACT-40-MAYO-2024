@@ -5,7 +5,10 @@ type BookListProps = {
   books: Book[];
 }
 
-function BookList({ books }: BookListProps) {
+function BookList( props: BookListProps) {
+  const {books} = props;
+
+  
   return (
     <>
       {books.map((book) => (

@@ -33,3 +33,7 @@ input:invalid + error {
   box-sizing: border-box;
 }
 
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}

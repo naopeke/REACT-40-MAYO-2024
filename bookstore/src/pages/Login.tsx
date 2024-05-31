@@ -1,6 +1,7 @@
 //rfce
 import { useState, useRef } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; 
 
 function Login() {
 
@@ -13,8 +14,7 @@ function Login() {
   });
 
   
-  const inputRef = useRef<null | HTMLInputElement>(null);
-
+  const inputRef = useRef<HTMLInputElement>(null);
 
   function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>){
     // console.log(event.target.value)
@@ -40,11 +40,23 @@ function Login() {
 
     const checkErrors = {...errors};
 
-    if (name === 'password' && !value) checkErrors.password = ''
+    if (name === 'password' && !value) checkErrors.email = 'Password requerido';
+    setErrors(checkErrors);
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+  // バリデーションチェック
+  if (!emailValue) {
+    setErrors({ ...errors, email: 'Email requerido' });
+    return;
+  }
+  if (!passwordValue) {
+    setErrors({ ...errors, password: 'Password requerido' });
+    return;
+  }
+
     try {
       const response = await axios.post('http://localhost:3000/login', {
         email: emailValue,
@@ -56,12 +68,6 @@ function Login() {
     }
   }
 
-  // const inputStyles = {
-  //   outline: passwordValue.length <8 ? '4px solid crimson': 'none'
-  // }
-
-
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-xs">
@@ -71,25 +77,37 @@ function Login() {
               Email
             </label>
             <input 
-            // style={inputStyles} 
-            ref={inputRef}
-         name="email" value={emailValue} onChange={handleEmailChange}className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="email" required />
+              ref={inputRef}
+              name="email" 
+              value={emailValue} 
+              onChange={handleEmailChange}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+              id="email" 
+              type="email" 
+              placeholder="email"/>
           </div>
 
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Password
             </label>
-            <input name="password" value={passwordValue} onChange={handlePasswordChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="********" required/>
+            <input 
+              name="password" 
+              value={passwordValue} 
+              onChange={handlePasswordChange} 
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+              id="password" 
+              type="password" 
+              placeholder="********"/>
             
           </div>
           <div className="flex items-center justify-between">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
               Sign In
             </button>
-            <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-              Forgot Password?
-            </a>
+            <Link to="/register" className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+              No tienes la cuenta?
+            </Link>
           </div>
           {/* <pre style={{fontSize:'2rem'}}>
             {JSON.stringify(formValues, null, 3)}

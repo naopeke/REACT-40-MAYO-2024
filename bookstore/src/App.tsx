@@ -12,14 +12,15 @@ import EditBook from './pages/EditBook';
 import AddBook from './pages/AddBook';
 import Register from './pages/Register';
 import Login from './pages/Login';
-
-
-
+import UserProvider from './contexts/UserProvider';
 
 function App(){
+
+
+
   return (
     <>
-
+    <UserProvider>
         <Header />
           <main>
             <Routes>
@@ -38,9 +39,8 @@ function App(){
               </Route>
             </Routes>
           </main>
+          </UserProvider>
         <Footer />
-
-
     </>
   )
 }
