@@ -2,69 +2,57 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { useUser } from '../contexts/UserProvider';
 
 function Login() {
 
-  const [emailValue, setEmailValue] = useState(''); 
-  const [passwordValue, setPasswordValue] = useState('');
+  // useContext(UserContext)を使用した場合
+  //const { logIn } = useContext(UserContext);
+
+  //useUserを使用した場合
+  const { logIn } = useUser();
+
+  const [formValues, setFormValues] = useState({
+    email: '',
+    password: '',
+  });
 
   const [errors, setErrors] = useState({
     email: '',
     password: '',
   });
 
+  const [touchedInputs, setTouchedInputs] = useState({
+    email: false,
+    password: false,
+  })
+
   
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
-  function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>){
-    // console.log(event.target.value)
-    const {name, value} = event.target;
-    setEmailValue(value);
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
 
-    // setEmailValue(event.target.value);
-    inputRef.current?.focus();
-
-    const checkErrors = {...errors}; // 既存のエラーを維持
-
+    const checkErrors = {
+      email: '',
+      password: ''
+    }
     if (name === 'email' && !value) checkErrors.email = 'Email requerido';
+    if (name === 'password' && !value) checkErrors.password = 'Contraseña requerido';
+
     setErrors(checkErrors);
-  } 
-
-  function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>){
-    setPasswordValue(event.target.value);
-
-    const {name, value} =event.target;
-    setPasswordValue(value);
-
-    inputRef.current?.focus();
-
-    const checkErrors = {...errors};
-
-    if (name === 'password' && !value) checkErrors.email = 'Password requerido';
-    setErrors(checkErrors);
+    setFormValues({ ...formValues, [name]: value });
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-  // バリデーションチェック
-  // if (!emailValue) {
-  //   setErrors({ ...errors, email: 'Email requerido' });
-  //   return;
-  // }
-  // if (!passwordValue) {
-  //   setErrors({ ...errors, password: 'Password requerido' });
-  //   return;
-  // }
-
     try {
-      const response = await axios.post('http://localhost:3000/login', {
-        email: emailValue,
-        password: passwordValue,
-      });
-      console.log(response.data);
+      const resp = await axios.post('http://localhost:3000/login', formValues);
+      logIn(resp.data); //login関数の使用
       navigate('/books');
+ 
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -81,12 +69,15 @@ function Login() {
             <input 
               ref={inputRef}
               name="email" 
-              value={emailValue} 
-              onChange={handleEmailChange}
+              value={formValues.email} 
+              onChange={handleInputChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
               id="email" 
               type="email" 
-              placeholder="email"/>
+              placeholder="email"
+              onBlur={() => setTouchedInputs({ ...touchedInputs, email: true})}
+              />
+              {errors.email && touchedInputs.email && <span className="text-red-400 block">{errors.email}</span>}
           </div>
 
           <div className="mb-6">
@@ -95,12 +86,15 @@ function Login() {
             </label>
             <input 
               name="password" 
-              value={passwordValue} 
-              onChange={handlePasswordChange} 
+              value={formValues.password} 
+              onChange={handleInputChange} 
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
               id="password" 
               type="password" 
-              placeholder="********"/>
+              placeholder="********"
+              onBlur={() => setTouchedInputs({ ...touchedInputs, password: true})}
+              />
+              {errors.password && touchedInputs.password && <span className="text-red-400 block">{errors.password}</span>}   
             
           </div>
           <div className="flex items-center justify-between">

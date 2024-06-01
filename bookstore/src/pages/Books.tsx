@@ -8,8 +8,9 @@ function Books() {
 
   const [books, setBooks] = useState<Book[]>([]);
   
-  const { user } = useUser(); //ログインユーザーの情報
+  const { user } = useUser(); //ログインユーザーの情報を取得
   const id_user = user?.id_user;
+  console.log('logged in in book page:',id_user)
 
 
   useEffect(() => {
@@ -17,7 +18,8 @@ function Books() {
       try {
         const resp = await fetch(`http://localhost:3000/books?id_user=${id_user}`);
         const json = await resp.json();
-        setBooks(json.data);
+        setBooks(json);
+        console.log('fetched from back', json);
       } catch (error) {
         if (error instanceof Error) {
           console.log(error.message);
@@ -26,7 +28,7 @@ function Books() {
     }
   
     getBooks();
-  }, [id_user, setBooks]);
+  }, [id_user]);
   
   return (
     <div className="flex flex-wrap justify-center">

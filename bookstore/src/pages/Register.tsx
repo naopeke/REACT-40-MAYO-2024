@@ -61,6 +61,7 @@ function Register() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault();
+    
     try {
       const resp = await axios.post('http://localhost:3000/register', formValues);
       console.log(resp.data);

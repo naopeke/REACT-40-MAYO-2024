@@ -1,6 +1,5 @@
 import "./Header.module.css";
 import Menu from './Menu';
-import Greet from '../components/Greet'
 
 
 function Header() {
@@ -10,7 +9,6 @@ function Header() {
   return (
     <header className="header w-full fixed top-0">      
       <Menu />
-      <Greet />
     </header>
   );
 }
