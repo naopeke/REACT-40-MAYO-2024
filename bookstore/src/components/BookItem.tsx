@@ -16,10 +16,12 @@ function BookItem(props: BookItemProps) {
     const navigate = useNavigate();
 
 
+
     function handleEditBook(event: React.MouseEvent) {
         event.preventDefault();
         console.log('edit', book.id_book);
-        navigate('/edit-book');
+        console.log('Before edit click', { state: { book } });
+        navigate('/edit-book', {state: {book}}); // Navigateとstateはセット
     }
 
     async function handleDeleteBook(event: React.MouseEvent) {
@@ -28,7 +30,7 @@ function BookItem(props: BookItemProps) {
         try {
             const resp = await axios.delete(`http://localhost:3000/books/${book.id_book}`);
             console.log('Success', resp.data);
-
+            window.location.reload();
         } catch (error) {
             console.log('Error: ', error);
         }
@@ -57,8 +59,8 @@ function BookItem(props: BookItemProps) {
                                     </span>
                                 </div>
                                 <div className="flex flex-row ml-auto space-x-3">
-                                    <CiEdit style={{ color: 'blue' }} onClick={handleEditBook}/>
-                                    <FaTrash style={{ color: 'red' }} onClick={handleDeleteBook} />
+                                    <CiEdit style={{ color: 'blue' }} onClick={handleEditBook} className="cursor-pointer"/>
+                                    <FaTrash style={{ color: 'red' }} onClick={handleDeleteBook} className="cursor-pointer"/>
                                 </div>
                             </div>
                         </div>

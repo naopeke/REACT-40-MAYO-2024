@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { editBookSchema, EditBookFormValues } from '../schemas/formSchemas';
 import Input from '../components/ui/Input';
 import Heading from "../components/ui/Heading"
-
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 function EditBook() {
   const { register, handleSubmit, formState } = useForm<EditBookFormValues>({
@@ -11,10 +12,21 @@ function EditBook() {
     resolver: zodResolver(editBookSchema),
   });
 
-  const { errors, isValid } = formState;
+  // const { errors, isValid } = formState;
+  const { errors } = formState;
 
-  function onSubmit(data: EditBookFormValues) {
-    console.log(data);
+  
+  const location = useLocation();
+  const { book } = location.state; // 渡された書籍情報を受け取る
+  console.log('State:', book);
+
+  async function onSubmit(data: EditBookFormValues) {
+    try {
+      const resp = await axios.put('http://localhost:3000/books/${book.id}', data);
+      console.log('Success', resp.data);
+    }catch (error) {
+      console.log('Error:', error);
+    }
   }
 
   return (
@@ -25,7 +37,8 @@ function EditBook() {
         <Input
           label="Titulo"
           type="text"
-          {...register('title')}
+          defaultValue={book.title}
+          {...register('title')} //useLocationから
           error={errors.title?.message}
         />
         </div>
@@ -34,6 +47,7 @@ function EditBook() {
         <Input
           label="Autor"
           type="text"
+          defaultValue={book.author}
           {...register('author')}
           error={errors.author?.message}
         />
@@ -43,6 +57,7 @@ function EditBook() {
         <Input
           label="Foto"
           type="text"
+          defaultValue={book.photo}
           {...register('photo')}
           error={errors.photo?.message}
         />
@@ -52,7 +67,9 @@ function EditBook() {
         <Input
           label="Precio"
           type="number"
-          {...register('price', { valueAsNumber: true })}
+          defaultValue={book.price}
+          step="0.01" //小数点も入力可能
+          {...register('price', {  valueAsNumber: true})}
           error={errors.price?.message}
         />
         </div>
@@ -87,7 +104,7 @@ function EditBook() {
             <button
               className="disabled:cursor-not-allowed disabled:opacity-60 shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
-              disabled={!isValid}
+              // disabled={!isValid}
             >
               Editar
             </button>

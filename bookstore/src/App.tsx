@@ -11,6 +11,7 @@ import EditBook from './pages/EditBook';
 import AddBook from './pages/AddBook';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Error404 from './pages/Error404'; // Pagina404コンポーネントをインポート
 import UserProvider from './contexts/UserProvider';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify"
@@ -38,6 +39,7 @@ function App(){
                 <Route path="/edit-book" element={<EditBook />} />
                 <Route path="/add-book" element={<AddBook />} />
               </Route>
+              <Route path="*" element={<Error404 />} />
             </Routes>
           </main>  
         <Footer />

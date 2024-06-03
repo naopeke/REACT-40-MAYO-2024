@@ -16,19 +16,12 @@ function Menu() {
     setIsOpenSidebar(prevState => !prevState)
   }
 
-  const { user } = useUser();
+  const { user, logOut } = useUser();
   console.log('logged in user:', user);
-  // const user = { name: 'Nao'};
-  // const user = null;
 
-  // const linkStyles = {
-  //   color: 'black',
-  //   font-size: '2rem'
-  // }
-
-  // function customClassName({ isActive}: {isActive: boolean}){
-  //   return isActive ? StyleSheet.active : '';
-  // }
+  const handleLogout = () => {
+    logOut();
+  }
   
 
 
@@ -75,7 +68,7 @@ function Menu() {
                 <NavLink to="/profile" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Perfil
                 </NavLink> 
-                <NavLink to="/login" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                <NavLink to="/login" onClick={handleLogout} className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                 Logout
                 </NavLink> 
                 <Greet />
@@ -83,7 +76,7 @@ function Menu() {
 
             ) : (
               <>
-              <NavLink to="/register" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
+                <NavLink to="/register" className="[&.active]:text-cyan-950 [&.active]:font-bold block mt-4 lg:inline-block lg:mt-0 text-white hover:text-black mx-6">
                   Register
                 </NavLink>
                 <NavLink to="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
