@@ -1,6 +1,8 @@
 import { FaTrash } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { Book } from "../config/types";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 type BookItemProps = {
@@ -11,14 +13,25 @@ type BookItemProps = {
 function BookItem(props: BookItemProps) {
     const { book } = props;
 
+    const navigate = useNavigate();
+
+
     function handleEditBook(event: React.MouseEvent) {
         event.preventDefault();
-        console.log('edit');
+        console.log('edit', book.id_book);
+        navigate('/edit-book');
     }
 
-    function handleDeleteBook(event: React.MouseEvent) {
+    async function handleDeleteBook(event: React.MouseEvent) {
         event.preventDefault();
-        console.log('delete');
+        console.log('delete', book.id_book);
+        try {
+            const resp = await axios.delete(`http://localhost:3000/books/${book.id_book}`);
+            console.log('Success', resp.data);
+
+        } catch (error) {
+            console.log('Error: ', error);
+        }
     }
 
     return (
@@ -44,7 +57,8 @@ function BookItem(props: BookItemProps) {
                                     </span>
                                 </div>
                                 <div className="flex flex-row ml-auto space-x-3">
-                                    <CiEdit style={{ color: 'blue' }} onClick={handleEditBook}/><FaTrash style={{ color: 'red' }} onClick={handleDeleteBook} />
+                                    <CiEdit style={{ color: 'blue' }} onClick={handleEditBook}/>
+                                    <FaTrash style={{ color: 'red' }} onClick={handleDeleteBook} />
                                 </div>
                             </div>
                         </div>

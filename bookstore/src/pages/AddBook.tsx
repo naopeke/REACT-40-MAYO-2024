@@ -4,9 +4,15 @@ import { addBookSchema, AddBookFormValues } from '../schemas/formSchemas';
 import Input from '../components/ui/Input';
 import Heading from "../components/ui/Heading"
 import axios from 'axios';
+import { useUser } from '../contexts/UserProvider';
+
 
 
 function AddBook() {
+
+  const { user } = useUser();
+  console.log('User in addbook', user);
+
   const { register, handleSubmit, formState } = useForm<AddBookFormValues>({
     mode: 'onChange',
     resolver: zodResolver(addBookSchema),
@@ -16,7 +22,9 @@ function AddBook() {
 
   async function onSubmit(data: AddBookFormValues) {
     try {
-      const resp = await axios.prototype('http://localhost:3000/add-book', data)
+      const payload = {...data, id_user: user?.id_user};
+      console.log('Payload:', payload); 
+      const resp = await axios.post('http://localhost:3000/books', payload)
       console.log('Success', resp.data);
     } catch (error){
       console.log('Error: ', error)

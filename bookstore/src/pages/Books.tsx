@@ -10,7 +10,7 @@ function Books() {
   
   const { user } = useUser(); //ログインユーザーの情報を取得
   const id_user = user?.id_user;
-  console.log('logged in in book page:',id_user)
+  console.log('logged in id_user in book page:',id_user)
 
 
   useEffect(() => {

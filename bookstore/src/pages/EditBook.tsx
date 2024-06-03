@@ -19,7 +19,7 @@ function EditBook() {
 
   return (
     <div className="flex items-center justify-center min-h-screen flex-col">
-      <Heading className="text-center mb-12" title="Añadir Libro" />
+      <Heading className="text-center mb-12" title="Editar Libro" />
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
       <div className="md:flex md:items-center mb-6">
         <Input
@@ -89,7 +89,7 @@ function EditBook() {
               type="submit"
               disabled={!isValid}
             >
-              Añadir Libro
+              Editar
             </button>
           </div>
         </div>

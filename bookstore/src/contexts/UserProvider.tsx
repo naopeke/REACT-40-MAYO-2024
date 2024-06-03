@@ -1,13 +1,6 @@
 import { createContext, useState, ReactNode, useContext } from 'react';
 import { User } from '../config/types'
 
-// ユーザーの型を定義
-// type User = {
-//     photo: string;
-//     id_user: number;
-//     name: string;
-// };
-
 // UserContextの型定義
 type UserContextType = {
     user: User | null;
